@@ -2,6 +2,8 @@
 
 This test requires that you to implement a product price checker interface.
 
+![price_checker](https://user-images.githubusercontent.com/951477/33724379-36183f64-db67-11e7-9a6f-4728a36fb27b.jpg)
+
 We have provided you with this bare-bones Django project to get started. Simply
 fork this repo and begin working, ensuring that you install and add to the
 requirements contained in `requirements.txt`.
