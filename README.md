@@ -24,8 +24,10 @@ The tasks you must carry out are as follows:
 1. Optimise the `products.utils.get_price` function which is very long running
    under certain circumstances and contains faults
 2. Implement the form as specified in the wireframe above using a modern
-   javascript framework such as React, Vue or Angular.
-3. Hook up the interface to the backend, such that the user can find the
+   javascript framework such as React, Vue or Angular
+3. Please ensure the form is presentable - you may use a CSS framework like
+   bootstrap or material-ui or roll your own
+4. Hook up the interface to the backend, such that the user can find the
    cheapest price by specifying a product, start date and nights
 
 Please provide us with information on how to run the code you provide.
