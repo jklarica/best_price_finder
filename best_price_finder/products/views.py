@@ -1,14 +1,12 @@
-from __future__ import unicode_literals
-
 from datetime import datetime
 
-from rest_framework import mixins, status
 from rest_framework import generics
+from rest_framework import mixins, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from products.models import Product, PricingBlock
-from products.serializers import ProductSerializer, PricingBlockSerializer, BestDealSerializer
+from products.serializers import ProductSerializer, PricingBlockSerializer, BestPriceSerializer
 from products.utils import get_price
 
 
@@ -39,6 +37,13 @@ class PricingBlockList(mixins.ListModelMixin,
 
 
 class BestPrice(APIView):
+    """
+    Resource used to find the best price based on provided start date, number of nights and product ID
+
+    Improvement ideas:
+        1.) Authentication and security
+        2.) Better and more granular error/exception handling, localized error messages for the client/UI
+    """
     def get(self, request):
         try:
             # Retrieve GET request params
@@ -47,10 +52,10 @@ class BestPrice(APIView):
             num_nights = request.GET.get('num_nights', None)
 
             # Get the best price for the requested time range
-            result = get_price(product_id, start_date.date(), int(num_nights))
-            response = Response(BestDealSerializer(result).data, status=status.HTTP_200_OK)
+            best_price = get_price(product_id, start_date.date(), int(num_nights))
+
+            # Produce a JSON response
+            response = Response(BestPriceSerializer(best_price).data, status=status.HTTP_200_OK)
         except Exception as e:
-            # TODO: Exception handling should be more specific, depending on the type of the error
-            # TODO: Return localized error messages to the client, depending on the exception being thrown
             response = Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
         return response

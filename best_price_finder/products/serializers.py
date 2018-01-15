@@ -1,4 +1,5 @@
 from rest_framework import serializers
+
 from products.models import Product, PricingBlock
 
 
@@ -14,7 +15,7 @@ class PricingBlockSerializer(serializers.ModelSerializer):
         fields = ('id', 'start_date', 'end_date', 'nights', 'price', 'product_id')
 
 
-class BestDealSerializer(serializers.Serializer):
+class BestPriceSerializer(serializers.Serializer):
     def update(self, instance, validated_data):
         pass
 
@@ -22,4 +23,5 @@ class BestDealSerializer(serializers.Serializer):
         pass
 
     price = serializers.DecimalField(max_digits=10, decimal_places=2, required=False)
+    currency = serializers.CharField(max_length=3, required=False)
     blocks = PricingBlockSerializer(many=True, required=False)

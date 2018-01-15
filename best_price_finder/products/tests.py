@@ -1,4 +1,3 @@
-from __future__ import unicode_literals
 from datetime import date
 from decimal import Decimal
 
@@ -25,10 +24,14 @@ class TestUtils(TestCase):
             date(2020, 1, 1),
             15
         )
-
         second_stay = get_price(
             Product.objects.get(id=1),
             date(2020, 1, 8),
+            6
+        )
+        no_offers = get_price(
+            Product.objects.get(id=1),
+            date(2020, 2, 1),
             6
         )
 
@@ -43,6 +46,8 @@ class TestUtils(TestCase):
             [2, 2, 7, 7],
             [block.id for block in second_stay['blocks']]
         )
+
+        self.assertEqual(no_offers.get('price', None), None)
 
     def test_reduce_pricing_blocks(self):
         blocks = get_lowest_price_blocks(1)

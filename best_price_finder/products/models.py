@@ -14,15 +14,16 @@ class Product(models.Model):
 
 
 class PricingBlock(models.Model):
-    """A period of time that a `product` can be booked.
+    """
+    A period of time that a 'product' can be booked.
 
-    The block can be booked between `start_date` and `end_date` for the number
-    of days specified, where the `end_date` is not inclusive.
+    The block can be booked between 'start_date' and 'end_date' for the number
+    of days specified, where the 'end_date' is not inclusive.
 
     For example, a 1 night block between 2016-01-01 and 2016-01-04 can be
     booked on the 1st, 2nd or 3rd for a night.
 
-    The `price` is the total for the number of nights.
+    The 'price' is the total for the number of nights.
     """
     id = models.IntegerField(primary_key=True)
     product = models.ForeignKey(Product)
