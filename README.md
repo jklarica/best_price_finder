@@ -36,7 +36,7 @@ curl -v "http://127.0.0.1:8000/best_price/?start_date=2020-01-08&num_nights=1&pr
 
 # How to run
 
-The project was build by using:
+The project was built by using:
 
  1. Python 3.6
  2. Django 1.11
@@ -44,18 +44,19 @@ The project was build by using:
 
 To run it, please ensure that you have Python 3.6 installed on your platform. 
 
-The following steps apply for running the app on OSX. We're using Python3 venv module to create a lightweight virtual environment.
+The following steps apply for the OSX environment. We're using Python3 venv module to create a lightweight virtual environment.
 
     1. git clone https://github.com/jklarica/best_price_finder.git && cd best_price_finder
     2. brew install python3
     3. python3 -m ensurepip --upgrade
-    4. python3.6 -m venv best_price_finder
-    5. source best_price_finder/bin/activate
+    4. python3.6 -m venv python3.6_env
+    5. source python3.6_env/bin/activate
     6. pip install -r requirements.txt
-    7. python manage.py makemigrations products
-    8. python manage.py migrate
-    9. python manage.py loaddata products/fixtures/initial_data.yaml
-    11. python manage.py runserver
-    12. python manage.py test
+    7. cd best_price_finder
+    8. python manage.py makemigrations products
+    9. python manage.py migrate
+    10. python manage.py loaddata products/fixtures/initial_data.yaml
+    11. python manage.py test
+    12. python manage.py runserver
     
 Finally, you can use the cURL command above to test the endpoint.

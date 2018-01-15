@@ -20,17 +20,17 @@ class TestUtils(TestCase):
 
     def test_find_best_price(self):
         first_stay = get_price(
-            Product.objects.get(id=1),
+            1,
             date(2020, 1, 1),
             15
         )
         second_stay = get_price(
-            Product.objects.get(id=1),
+            1,
             date(2020, 1, 8),
             6
         )
         no_offers = get_price(
-            Product.objects.get(id=1),
+            1,
             date(2020, 2, 1),
             6
         )
