@@ -9,7 +9,7 @@ def _get_offers(pricing_blocks, start_date, nights):
     Retrieve all offers based on start date, total number of nights and pricing blocks which match the given time range.
 
     Recursion is used to find the most granular price block and assemble a collection of block combinations. The output
-    will contains all block combos, so once it's sorted by price, the first one will represent the cheapest deal.
+    will contain all block combos, so once it's sorted by price, the first one will represent the cheapest deal.
 
     Improvement ideas:
         1.) Reduce number of price blocks - the more pricing blocks we have, the longer it takes to compute all
@@ -54,7 +54,6 @@ def get_price(product_id, start_date, nights):
 
     This function will retrieve all pricing blocks from the DB, matching the given product ID, and compute all offer
     combinations (for the given time range) in order to find the best/cheapest block combination.
-
     """
     start = time.time()
 

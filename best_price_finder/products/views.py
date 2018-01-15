@@ -40,6 +40,9 @@ class BestPrice(APIView):
     """
     Resource used to find the best price based on provided start date, number of nights and product ID
 
+    Example request:
+        curl -v "http://127.0.0.1:8000/best_price/?start_date=2020-01-08&num_nights=1&product_id=1"
+
     Improvement ideas:
         1.) Authentication and security
         2.) Better and more granular error/exception handling, localized error messages for the client/UI
