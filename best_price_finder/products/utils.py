@@ -91,7 +91,8 @@ def get_lowest_price_blocks(product_id):
     lowest price.
 
     Improvement ideas:
-        1.) If a price block exists which spans across several other blocks and: a) it has the same number of nights
+        1.) Remove pricing blocks which are obviously out-of-range when compared to given 'start_date' + 'nights'
+        2.) If a price block exists which spans across several other blocks and: a) it has the same number of nights
             as all of its child blocks, b) it's cheaper compared to all child blocks - then remove all matching child
             blocks.
 
@@ -100,7 +101,7 @@ def get_lowest_price_blocks(product_id):
                 [2018. 01. 02. - 2018. 01. 10.] 2 nights cost 120 EUR - REMOVE
                 [2018. 01. 03. - 2018. 01. 10.] 2 nights cost 123 EUR - REMOVE
 
-        2.) There's probably a better way to retrieve the min-price blocks per group by leveraging the QuerySet API
+        3.) There's probably a better way to retrieve the min-price blocks per group by leveraging the QuerySet API
     """
     lowest_price_blocks = {}
     for block in PricingBlock.objects.filter(product=product_id).iterator():
