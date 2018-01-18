@@ -1,4 +1,5 @@
 
+
 # Best Price Finder
 
 This DRF application can be used to determine the cheapest/best combination of offers/pricing blocks, based on provided start date, number of nights and the product ID.
@@ -41,22 +42,45 @@ The project was built by using:
  1. Python 3.6
  2. Django 1.11
  3. Django Rest Framework 3.7.7
+ 4. ReactJS (ES6) using Webpack and Babel 
 
-To run it, please ensure that you have Python 3.6 installed on your platform. 
+To run it, please ensure that you have Python 3.6 and node package manager installed on your platform. 
 
 The following steps apply for the OSX environment. We're using Python3 venv module to create a lightweight virtual environment.
 
-    1. git clone https://github.com/jklarica/best_price_finder.git && cd best_price_finder
-    2. brew install python3
-    3. python3 -m ensurepip --upgrade
-    4. python3.6 -m venv python3.6_env
-    5. source python3.6_env/bin/activate
-    6. pip install -r requirements.txt
-    7. cd best_price_finder
-    8. python manage.py makemigrations products
-    9. python manage.py migrate
-    10. python manage.py loaddata products/fixtures/initial_data.yaml
-    11. python manage.py test
-    12. python manage.py runserver
+## Initial steps
+
+    1. git clone https://github.com/jklarica/best_price_finder.git
+    2. cd best_price_finder
+    3. brew install python3
+    4. python3 -m ensurepip --upgrade
+    5. python3.6 -m venv python3.6_env
+    6. source python3.6_env/bin/activate
+    7. pip install -r requirements.txt
+
+## REST API
+
+    1. cd best_price_finder
+    2. python manage.py makemigrations products
+    3. python manage.py migrate
+    4. python manage.py loaddata products/fixtures/initial_data.yaml
+    5. python manage.py test
+    6. python manage.py runserver
+
+Server should now be accessible at [http://localhost:8000/](http://localhost:8000/). 
+
+Example requests:
+
+    1. http://127.0.0.1:8000/best_price/?format=api&num_nights=15&product_id=1&start_date=2020-01-1
+    2. http://127.0.0.1:8000/product/
+    3. http://127.0.0.1:8000/pricing_block/
     
-Finally, you can use the cURL command above to test the endpoint.
+## Frontend
+
+This should be executed in another shell instance; navigate to the project root directory and then:
+
+    1. cd frontend
+    2. npm install
+    4. npm run dev
+
+Finally, navigate to [http://localhost:8080/](http://localhost:8080/) to access the frontend.
