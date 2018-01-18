@@ -3,6 +3,22 @@ import { Button, ButtonGroup, Col, ControlLabel, DropdownButton, FormControl, Fo
 import axios from 'axios';
 import '../../styles/components/BestPriceFinder.less';
 
+/**
+ * Component which renders a small widget, used retrieve best price based on provided start date,
+ * number of nights and product type
+ *
+ * Improvement ideas:
+ *  1.) Security (i.e. add CSRF token to each Ajax call)
+ *  2.) Pass environment-dependant variables from webpack
+ *  3.) Better error handling and messaging
+ *  4.) Better input validation
+ *  5.) Move product filtering to the server-side (i.e. if published or not)
+ *  6.) Datepicker is missing
+ *  7.) Localization
+ *  8.) Add linters for ES and React
+ *  8.) Etc.
+ *
+ */
 class BestPriceFinder extends Component {
     constructor(props) {
         super(props);
@@ -11,9 +27,9 @@ class BestPriceFinder extends Component {
             selectedProduct: { value: null, valid: null }, // Selected product
             startDate: { value: null, valid: null },       // Start dates
             numberOfNights: { value: null, valid: null },  // How many nights to stay
-            error: null,                                   // Error indicating that something went wrong with the API request
-            isLoading: false,                              // Indicating that we're waiting response from the server
-            bestOffer: null                                // Best offer; contains price, currency and combinations of pricing blocks
+            error: null,                                   // Used to indicate that something went wrong with the API request
+            isLoading: false,                              // Used to indicate that we're waiting response from the server
+            bestOffer: null                                // Best offer; contains price, currency and a combination of pricing blocks
         };
     }
 
@@ -31,7 +47,7 @@ class BestPriceFinder extends Component {
             'selectedProduct',
             this.state.selectedProduct,
             product,
-            function(value) { return value !== null;}
+            function(value) { return value !== null; }
         );
     }
 
@@ -49,8 +65,7 @@ class BestPriceFinder extends Component {
             'numberOfNights',
             this.state.numberOfNights,
             evt.target.value,
-            function(value) { return value && !isNaN(value);}
-
+            function(value) { return value && !isNaN(value); }
         )
     }
 

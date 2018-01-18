@@ -13,12 +13,14 @@ const paths = {
 module.exports = {
     devtool: 'inline-source-map',
     entry: './src/js/index.js',
-    output: {
+    output:
+    {
         path: paths.DIST,
-        filename: 'index_bundle.js',
+        filename: 'best-price.js',
     },
     // Tell webpack to use HTML plugin
-    plugins: [
+    plugins:
+    [
         new HtmlWebpackPlugin({
             template: path.join(paths.PUBLIC, 'index.html'),
             filename: 'index.html',
@@ -28,43 +30,53 @@ module.exports = {
     ],
     // Loaders configuration
     // We are telling webpack to use 'babel-loader' for .js and .jsx files
-    module: {
-         loaders: [
-            { test: /\.js$/, loader: "jsx-loader" },
-            { test: /\.less$/, loader: "style!css!less" }
-        ],
-        rules: [
+    module:
+    {
+        rules:
+        [
             {
-            test: /\.less$/,
-            use: [{
-                loader: "style-loader" // creates style nodes from JS strings
-            }, {
-                loader: "css-loader" // translates CSS into CommonJS
-            }, {
-                loader: "less-loader" // compiles Less to CSS
-            }]
+                test: /\.less$/,
+                use:
+                [
+                    {
+                        // Creates style nodes from JS strings
+                        loader: "style-loader"
+                    },
+                    {
+                        // Translates CSS into CommonJS
+                        loader: "css-loader"
+                    },
+                    {
+                        // Compiles Less to CSS
+                        loader: "less-loader"
+                    }
+                ]
             },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: ['babel-loader'],
-            }, {
+            },
+            {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract({
                     use: 'css-loader',
                 }),
-            }, {
+            },
+            {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract({
                     use: ['css-loader', 'sass-loader'],
                 }),
-            }, {
+            },
+            {
                 test: /\.(png|jpg|gif)$/,
                 use: ['file-loader'],
             },
         ],
     },
-    resolve: {
+    resolve:
+    {
         extensions: ['.js', '.jsx'],
     },
 };
